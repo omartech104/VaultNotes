@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaultNotes | Secure Keep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+    <section id="auth-section" class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
+            <h1 id="auth-title" class="text-3xl font-extrabold text-yellow-500 text-center mb-2">VaultNotes</h1>
+            <p id="auth-subtitle" class="text-center text-gray-500 mb-8">Secure your thoughts.</p>
+
+            <form onsubmit="handleAuth(event)" class="space-y-4">
+                <div id="signup-fields" class="hidden">
+                    <label class="block text-sm font-semibold mb-1">Username</label>
+                    <input type="text" id="username" class="custom-input" placeholder="Your name">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-1">Email</label>
+                    <input type="email" id="email" required class="custom-input" placeholder="email@example.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-1">Password</label>
+                    <input type="password" id="password" required class="custom-input" placeholder="••••••••">
+                </div>
+                <button type="submit" id="auth-btn" class="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-3 rounded-xl transition-all shadow-lg">
+                    Login
+                </button>
+            </form>
+
+            <p class="text-center mt-6 text-sm">
+                <span id="toggle-text">New here?</span>
+                <button onclick="toggleAuth()" id="toggle-link" class="text-yellow-600 font-bold hover:underline">Create account</button>
+            </p>
+        </div>
+    </section>
+
+    <section id="notes-section" class="hidden min-h-screen">
+        <nav class="bg-white border-b border-gray-200 p-4 sticky top-0 z-40 flex justify-between items-center shadow-sm">
+            <span class="text-xl font-bold text-yellow-500">VaultNotes</span>
+            <button onclick="logout()" class="text-gray-500 hover:text-red-500 font-medium">Logout</button>
+        </nav>
+
+        <main class="max-w-5xl mx-auto p-6">
+            <div class="max-w-xl mx-auto mb-12 bg-white rounded-xl shadow-md border border-gray-200 p-4">
+                <input type="text" id="note-title" placeholder="Title" class="w-full font-bold text-lg mb-2 outline-none">
+                <textarea id="note-content" placeholder="Take a note..." class="w-full outline-none resize-none h-24"></textarea>
+                <div class="flex justify-end">
+                    <button onclick="saveNote()" class="bg-yellow-400 text-white px-6 py-2 rounded-lg font-bold hover:bg-yellow-500">Save</button>
+                </div>
+            </div>
+
+            <div id="notes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+        </main>
+    </section>
+
+    <div id="view-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-lg p-8 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+            <h2 id="modal-title" class="text-2xl font-bold mb-4"></h2>
+            <div id="modal-content" class="text-gray-700 leading-relaxed whitespace-pre-wrap"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
