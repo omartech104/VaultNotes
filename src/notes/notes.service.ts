@@ -12,14 +12,18 @@ export class NotesService {
   ) {}
 
   // 1. Create a new note
-  async create(createNoteDto: CreateNoteDto): Promise<Note> {
+  async create(createNoteDto: CreateNoteDto, userId: number): Promise<Note> {
     const newNote = this.notesRepository.create(createNoteDto);
+    newNote.user = { id: userId } as any;
     return await this.notesRepository.save(newNote);
   }
 
   // 2. Find all notes (usually for a dashboard list)
-  async findAll(): Promise<Note[]> {
-    return await this.notesRepository.find();
+  async findAll(userId: number): Promise<Note[]> {
+    return await this.notesRepository.find({
+      where: { user: { id: userId } }, // Only get notes belonging to this user
+      order: { createdAt: 'DESC' }, // Show newest notes first
+    });
   }
 
   // 3. Find one specific note

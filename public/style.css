@@ -1,27 +1,34 @@
-.custom-input {
+.auth-input {
     width: 100%;
-    padding: 0.75rem 1rem;
-    border: 2px solid #f3f4f6;
+    padding: 0.8rem 1rem;
+    background: #f8fafc;
+    border: 2px solid #f1f5f9;
     border-radius: 0.75rem;
     outline: none;
     transition: all 0.2s;
 }
-
-.custom-input:focus {
-    border-color: #fbbf24; /* yellow-400 */
-    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.1);
+.auth-input:focus {
+    border-color: #fbbf24;
+    background: white;
 }
+.hidden { display: none !important; }
 
-.hidden {
-    display: none !important;
-}
-
-/* Note Cards animation */
 .note-card {
-    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-.note-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
 }
